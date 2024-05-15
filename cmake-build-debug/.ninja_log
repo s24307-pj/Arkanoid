@@ -1,0 +1,13 @@
+# ninja log v5
+3	706	7356602818004445	CMakeFiles/untitled.dir/main.cpp.obj	7754775f751c7935
+6	138	7374929603325557	build.ninja	4fe02cf89cdf554b
+679	1053	7374928768126901	untitled.exe	70f17843c352807d
+47	305	7374074327828367	CMakeFiles/untitled.dir/src/menu.cpp.obj	ab2c235a7e1ef1ec
+14	679	7374928765470332	CMakeFiles/untitled.dir/src/main.cpp.obj	ffeef867fe222dfd
+28	244	7374926989389288	CMakeFiles/untitled.dir/src/brick.cpp.obj	6fc49ac8a27ab44c
+28	382	7374928762510096	CMakeFiles/untitled.dir/src/paddle.cpp.obj	540ef9d94c2cbfc6
+8	61	7356876120854326	CMakeFiles/untitled.dir/src/game.cpp.obj	25baf900fedf309b
+32	427	7374926991224382	CMakeFiles/untitled.dir/src/brickManager.cpp.obj	a277a46d69e12c11
+1072	1454	7370326300642276	CMakeFiles/untitled.dir/src/ball.cpp.obj	41ceb75e01918362
+12	428	7374929603325557	build.ninja	4fe02cf89cdf554b
+12	467	7374929607590938	untitled.exe	5bef876a17c3718b

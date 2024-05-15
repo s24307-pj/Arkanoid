@@ -28,6 +28,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    Paddle paddle(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    BrickManager brickManager;
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 16; j++) {
+            brickManager.addBrick(j * 50, i * 20, 48, 18);
+        }
+    }
 
     bool quit = false, startGame = false;
 
@@ -47,6 +55,10 @@ int main(int argc, char* argv[]) {
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderClear(renderer);
 
+            brickManager.render(renderer);
+            paddle.handleInput();
+            paddle.update();
+            paddle.render();
             SDL_RenderPresent(renderer);
         }
     }
