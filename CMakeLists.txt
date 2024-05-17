@@ -13,6 +13,14 @@ include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
 
 add_executable(${PROJECT_NAME} src/main.cpp
         src/menu.cpp
+        src/headers/paddle.h
+        src/paddle.cpp
+        src/headers/brick.h
+        src/headers/brickManager.h
+        src/brick.cpp
+        src/brickManager.cpp
+        src/headers/ball.h
+        src/ball.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

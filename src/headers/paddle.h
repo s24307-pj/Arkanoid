@@ -10,6 +10,9 @@ public:
     void handleInput();
     void update();
     void render();
+    SDL_Rect getRect();
+
+    void reset();
 
 private:
     SDL_Renderer* renderer;

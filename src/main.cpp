@@ -29,6 +29,7 @@ int main(int argc, char* argv[]) {
     }
 
     Paddle paddle(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    Ball ball(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 10, 10, -1, -1);
     BrickManager brickManager;
 
     for (int i = 0; i < 5; i++) {
@@ -48,17 +49,29 @@ int main(int argc, char* argv[]) {
                 if (e.type == SDL_QUIT) {
                     quit = true;
                 } else if (e.type == SDL_KEYDOWN) {
-
+                    if (e.key.keysym.sym == SDLK_SPACE) {
+                        ball.launch();
+                    }
                 }
             }
 
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderClear(renderer);
+            if (ball.getRect().y >= SCREEN_HEIGHT - ball.getRect().h) {
+                startGame = false;
+                ball.reset(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, -1, -1);
+                paddle.reset();
+                brickManager.reset();
+            }
 
+            brickManager.checkCollision(ball);
+            ball.update();
+            ball.checkCollision(paddle.getRect());
             brickManager.render(renderer);
             paddle.handleInput();
             paddle.update();
             paddle.render();
+            ball.render(renderer);
             SDL_RenderPresent(renderer);
         }
     }

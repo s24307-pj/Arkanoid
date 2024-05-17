@@ -12,6 +12,9 @@ public:
     BrickManager();
     void addBrick(int x, int y, int w, int h);
     void render(SDL_Renderer* renderer);
+    void checkCollision(Ball& ball);
+
+    void reset();
 };
 
 #endif
