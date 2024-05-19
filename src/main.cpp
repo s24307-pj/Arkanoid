@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
 #include <iostream>
 #include "headers/menu.h"
 #include "headers/paddle.h"
@@ -28,7 +29,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Paddle paddle(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    Paddle paddle(renderer, SCREEN_WIDTH, SCREEN_HEIGHT, "../assets/img/paddle.jpg");
     Ball ball(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 10, 10, -1, -1);
     BrickManager brickManager;
 

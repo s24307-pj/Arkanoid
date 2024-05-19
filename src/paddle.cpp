@@ -1,13 +1,31 @@
 #include "headers/paddle.h"
-#include <SDL.h>
-#include <algorithm>
+#include <SDL_image.h>
+#include <iostream>
 
-Paddle::Paddle(SDL_Renderer* renderer, int screenWidth, int screenHeight)
+Paddle::Paddle(SDL_Renderer* renderer, int screenWidth, int screenHeight, const std::string& texturePath)
         : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight), velX(0.0f), lastUpdate(SDL_GetTicks()) {
     rect.w = 100;
     rect.h = 20;
     rect.x = (screenWidth - rect.w) / 2;
     rect.y = screenHeight - rect.h - 30;
+
+    // Load texture
+    texture = loadTexture(texturePath);
+    if (!texture) {
+        std::cerr << "Failed to load paddle texture! SDL_Error: " << SDL_GetError() << std::endl;
+    }
+}
+
+Paddle::~Paddle() {
+    SDL_DestroyTexture(texture);
+}
+
+SDL_Texture* Paddle::loadTexture(const std::string& path) {
+    SDL_Texture* newTexture = IMG_LoadTexture(renderer, path.c_str());
+    if (!newTexture) {
+        std::cerr << "Unable to load texture " << path << "! SDL_image Error: " << IMG_GetError() << std::endl;
+    }
+    return newTexture;
 }
 
 void Paddle::handleInput() {
@@ -22,7 +40,6 @@ void Paddle::handleInput() {
     } else if (currentKeyStates[SDL_SCANCODE_RIGHT]) {
         velX += acceleration;
     }
-
 }
 
 void Paddle::update() {
@@ -47,8 +64,7 @@ SDL_Rect Paddle::getRect() {
 }
 
 void Paddle::render() {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &rect);
+    SDL_RenderCopy(renderer, texture, NULL, &rect);
 }
 
 void Paddle::reset() {

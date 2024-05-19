@@ -35,7 +35,7 @@ void Ball::update() {
     if (!isLaunched) return;
 
     frameCounter++;
-    if (frameCounter % 10 == 0) {
+    if (frameCounter % 15 == 0) {
         int potentialX = rect.x + std::clamp(dx, -maxSpeed, maxSpeed);
         int potentialY = rect.y + std::clamp(dy, -maxSpeed, maxSpeed);
 
